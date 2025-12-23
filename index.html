@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>جواهری استقلال — داشبورد قیمت (غیر رسمی)</title>
+  <meta name="author" content="Mohammad Javad">
+  <meta name="description" content="نسخهٔ غیر رسمی — قیمت‌ها از تابان گوهر گرفته می‌شود">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- ENTRY SCREEN -->
+  <div id="entryScreen" class="center">
+    <div class="card" role="dialog" aria-labelledby="entryTitle">
+      <div class="entry-header">
+        <div>
+          <h1 id="entryTitle">جواهری استقلال — داشبورد</h1>
+          <div class="small">نسخهٔ غیر رسمی — سازنده: Mohammad Javad</div>
+        </div>
+        <div id="installHint" class="small"></div>
+      </div>
+
+      <div class="entry-grid">
+        <div class="entry" aria-label="فروشگاه">
+          <h2>فروشگاه (Shop)</h2>
+          <p class="small">نمای مینیمال مناسب ویترین: نمایش بزرگ قیمت و تاریخچهٔ محلی.</p>
+          <ul class="small"><li>قیمت ۱۸ و ۲۴</li><li>ذخیره محلی تاریخچه</li></ul>
+          <div class="entry-actions">
+            <button class="btn" data-mode="shop">ورود به فروشگاه</button>
+          </div>
+        </div>
+
+        <div class="entry" aria-label="کامل">
+          <h2>کامل و تحلیلی (Full)</h2>
+          <p class="small">داشبورد کامل با Rule Engine، نمودار، Timeline، Market Score و PWA.</p>
+          <ul class="small"><li>Rule Engine رمزگذاری‌شده</li><li>قفل محلی (fingerprint)</li></ul>
+          <div class="entry-actions">
+            <button class="btn" data-mode="full">ورود به نسخهٔ کامل</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="small foot-note">انتخاب شما در این دستگاه ذخیره می‌شود — منبع قیمت‌ها: تابان گوهر.</div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="appRoot" class="hidden" aria-hidden="true">
+    <div class="app" role="application" aria-label="داشبورد">
+
+      <header class="app-header">
+        <div>
+          <h2>جواهری استقلال — داشبورد</h2>
+          <div class="small meta">سازنده: Mohammad Javad — نسخهٔ غیر رسمی</div>
+        </div>
+        <div class="app-status">
+          <div class="small">اینترنت: <span id="netText" class="status-unknown">قطع</span></div>
+          <div class="small">داده: <span id="freshText" class="status-unknown">ناموجود</span></div>
+          <button id="backBtn" class="btn inline">بازگشت به انتخاب حالت</button>
+        </div>
+      </header>
+
+      <aside class="left" id="leftCol">
+        <div class="shop-box">
+          <div id="shopPrice" class="big-price">— تومان</div>
+          <div class="small">قیمت ۱۸ عیار</div>
+          <div class="shop-actions">
+            <button id="fetchBtn" class="btn">دریافت</button>
+            <button id="saveBtn" class="btn alt">ذخیره</button>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="history-header">
+          <div class="bold">تاریخچه</div>
+          <div><button id="clearHistory" class="btn small alt">پاک</button></div>
+        </div>
+        <div id="historyList" class="history-list"></div>
+
+        <div id="devNotice" class="devwarn hidden">هشدار: DevTools باز شده — قابلیت‌های تحلیلی غیرفعال شدند.</div>
+      </aside>
+
+      <main class="main" id="mainCol">
+        <div id="fullUI" class="full-ui">
+          <div class="inputs-row">
+            <div class="input-col">
+              <label>قیمت ۱۸ (تومان)</label>
+              <input id="price18" type="text" inputmode="numeric" />
+            </div>
+            <div class="input-col">
+              <label>قیمت ۲۴ (تومان)</label>
+              <input id="price24" type="text" inputmode="numeric" />
+            </div>
+            <div class="input-col small-col">
+              <label>Explain</label>
+              <div class="toggle-row">
+                <div id="explainToggle" class="tiny-toggle" role="switch" tabindex="0"></div>
+                <div class="small">نمایش توضیحات</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-block">
+            <label>نمودار (تاریخچه)</label>
+            <div class="chart-wrap">
+              <canvas id="priceChart"></canvas>
+              <div id="chartFallback" class="hidden small">نمودار در دسترس نیست</div>
+            </div>
+          </div>
+
+          <div class="panels-row">
+            <div class="panel timeline-panel">
+              <label>Timeline</label>
+              <div id="timeline" class="timeline-list"></div>
+            </div>
+
+            <div class="panel summary-panel">
+              <label>Market Score</label>
+              <div id="marketScore" class="score">—</div>
+              <label style="margin-top:10px">اعلان‌ها</label>
+              <div id="alerts" class="alerts-list"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="right" id="rightCol">
+        <div class="bold">Rule Engine (حساس — runtime-decode)</div>
+        <div id="rulesUI" class="rules-ui"></div>
+        <div class="rules-actions">
+          <button id="addRuleBtn" class="btn small">افزودن قانون</button>
+          <button id="evalRuleBtn" class="btn small alt">ارزیابی</button>
+        </div>
+
+        <hr>
+
+        <div class="bold">Bookmarks</div>
+        <div id="bookmarks" class="bookmarks-list"></div>
+        <button id="bookmarkBtn" class="btn alt fullwidth">بوکمارک سریع</button>
+      </aside>
+
+    </div>
+
+    <footer class="site-footer">منبع: تابان گوهر — این نسخه غیر رسمی است.</footer>
+  </div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
