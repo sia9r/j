@@ -6,42 +6,37 @@
   <title>جواهری استقلال — داشبورد قیمت (غیر رسمی)</title>
   <meta name="author" content="Mohammad Javad">
   <meta name="description" content="نسخهٔ غیر رسمی — قیمت‌ها از تابان گوهر گرفته می‌شود">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <!-- ENTRY SCREEN -->
   <div id="entryScreen" class="center">
     <div class="card" role="dialog" aria-labelledby="entryTitle">
-      <div class="entry-header">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
         <div>
-          <h1 id="entryTitle">جواهری استقلال — داشبورد</h1>
+          <h1 id="entryTitle" style="margin:0;color:#6b4f00">جواهری استقلال — داشبورد</h1>
           <div class="small">نسخهٔ غیر رسمی — سازنده: Mohammad Javad</div>
         </div>
-        <div id="installHint" class="small"></div>
+        <div id="installHint" class="small" style="text-align:left"></div>
       </div>
 
       <div class="entry-grid">
         <div class="entry" aria-label="فروشگاه">
-          <h2>فروشگاه (Shop)</h2>
+          <h2 style="margin:0;color:#6b4f00">فروشگاه (Shop)</h2>
           <p class="small">نمای مینیمال مناسب ویترین: نمایش بزرگ قیمت و تاریخچهٔ محلی.</p>
-          <ul class="small"><li>قیمت ۱۸ و ۲۴</li><li>ذخیره محلی تاریخچه</li></ul>
-          <div class="entry-actions">
-            <button class="btn" data-mode="shop">ورود به فروشگاه</button>
-          </div>
+          <div style="margin-top:auto"><button class="btn" data-mode="shop">ورود به فروشگاه</button></div>
         </div>
 
         <div class="entry" aria-label="کامل">
-          <h2>کامل و تحلیلی (Full)</h2>
-          <p class="small">داشبورد کامل با Rule Engine، نمودار، Timeline، Market Score و PWA.</p>
-          <ul class="small"><li>Rule Engine رمزگذاری‌شده</li><li>قفل محلی (fingerprint)</li></ul>
-          <div class="entry-actions">
-            <button class="btn" data-mode="full">ورود به نسخهٔ کامل</button>
-          </div>
+          <h2 style="margin:0;color:#6b4f00">کامل و تحلیلی (Full)</h2>
+          <p class="small">داشبورد کامل با Rule Engine، نمودار، Timeline و PWA.</p>
+          <div style="margin-top:auto"><button class="btn" data-mode="full">ورود به نسخهٔ کامل</button></div>
         </div>
       </div>
 
-      <div class="small foot-note">انتخاب شما در این دستگاه ذخیره می‌شود — منبع قیمت‌ها: تابان گوهر.</div>
+      <div style="margin-top:10px;text-align:center" class="small">انتخاب شما در این دستگاه ذخیره می‌شود — منبع قیمت‌ها: تابان گوهر.</div>
     </div>
   </div>
 
@@ -49,103 +44,101 @@
   <div id="appRoot" class="hidden" aria-hidden="true">
     <div class="app" role="application" aria-label="داشبورد">
 
-      <header class="app-header">
+      <header>
         <div>
-          <h2>جواهری استقلال — داشبورد</h2>
-          <div class="small meta">سازنده: Mohammad Javad — نسخهٔ غیر رسمی</div>
+          <h2 style="margin:0;color:#6b4f00">جواهری استقلال — داشبورد</h2>
+          <div class="small">سازنده: Mohammad Javad — نسخهٔ غیر رسمی</div>
         </div>
-        <div class="app-status">
-          <div class="small">اینترنت: <span id="netText" class="status-unknown">قطع</span></div>
-          <div class="small">داده: <span id="freshText" class="status-unknown">ناموجود</span></div>
-          <button id="backBtn" class="btn inline">بازگشت به انتخاب حالت</button>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="small">اینترنت: <span id="netText">قطع</span></div>
+          <div class="small">داده: <span id="freshText">ناموجود</span></div>
+          <button id="backBtn" class="btn">بازگشت به انتخاب حالت</button>
         </div>
       </header>
 
       <aside class="left" id="leftCol">
-        <div class="shop-box">
-          <div id="shopPrice" class="big-price">— تومان</div>
+        <div style="text-align:center">
+          <div id="shopPrice" style="font-weight:900;font-size:28px">— تومان</div>
           <div class="small">قیمت ۱۸ عیار</div>
-          <div class="shop-actions">
+          <div style="margin-top:8px;display:flex;gap:8px;justify-content:center">
             <button id="fetchBtn" class="btn">دریافت</button>
-            <button id="saveBtn" class="btn alt">ذخیره</button>
+            <button id="saveBtn" class="btn" style="background:#efefef;color:#222">ذخیره</button>
           </div>
         </div>
 
-        <hr>
+        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(0,0,0,0.06)">
 
-        <div class="history-header">
-          <div class="bold">تاریخچه</div>
-          <div><button id="clearHistory" class="btn small alt">پاک</button></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div style="font-weight:900">تاریخچه</div>
+          <div><button id="clearHistory" style="background:#fff;border:1px solid #eee;padding:6px;border-radius:8px">پاک</button></div>
         </div>
-        <div id="historyList" class="history-list"></div>
+        <div id="historyList" style="max-height:44vh;overflow:auto"></div>
 
         <div id="devNotice" class="devwarn hidden">هشدار: DevTools باز شده — قابلیت‌های تحلیلی غیرفعال شدند.</div>
       </aside>
 
       <main class="main" id="mainCol">
-        <div id="fullUI" class="full-ui">
-          <div class="inputs-row">
-            <div class="input-col">
-              <label>قیمت ۱۸ (تومان)</label>
-              <input id="price18" type="text" inputmode="numeric" />
+        <div id="fullUI">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="flex:1">
+              <label style="font-weight:900">قیمت ۱۸ (تومان)</label>
+              <input id="price18" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6d6a0;text-align:center;font-weight:900" />
             </div>
-            <div class="input-col">
-              <label>قیمت ۲۴ (تومان)</label>
-              <input id="price24" type="text" inputmode="numeric" />
+            <div style="flex:1">
+              <label style="font-weight:900">قیمت ۲۴ (تومان)</label>
+              <input id="price24" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6d6a0;text-align:center;font-weight:900" />
             </div>
-            <div class="input-col small-col">
-              <label>Explain</label>
-              <div class="toggle-row">
+            <div style="width:200px">
+              <label style="font-weight:900">Explain</label>
+              <div style="display:flex;gap:8px;align-items:center">
                 <div id="explainToggle" class="tiny-toggle" role="switch" tabindex="0"></div>
                 <div class="small">نمایش توضیحات</div>
               </div>
             </div>
           </div>
 
-          <div class="chart-block">
-            <label>نمودار (تاریخچه)</label>
-            <div class="chart-wrap">
+          <div style="margin-top:12px">
+            <label style="font-weight:900">نمودار</label>
+            <div style="margin-top:8px;border-radius:8px;background:linear-gradient(90deg,#fff,#fff9e6);padding:6px">
               <canvas id="priceChart"></canvas>
-              <div id="chartFallback" class="hidden small">نمودار در دسترس نیست</div>
+              <div id="chartFallback" class="small hidden" style="color:#b00;padding:8px">نمودار در دسترس نیست</div>
             </div>
           </div>
 
-          <div class="panels-row">
-            <div class="panel timeline-panel">
-              <label>Timeline</label>
-              <div id="timeline" class="timeline-list"></div>
+          <div style="margin-top:12px;display:flex;gap:12px">
+            <div style="flex:1">
+              <label style="font-weight:900">Timeline</label>
+              <div id="timeline" style="max-height:160px;overflow:auto;background:#fff9e6;padding:6px;border-radius:8px"></div>
             </div>
-
-            <div class="panel summary-panel">
-              <label>Market Score</label>
-              <div id="marketScore" class="score">—</div>
-              <label style="margin-top:10px">اعلان‌ها</label>
-              <div id="alerts" class="alerts-list"></div>
+            <div style="width:320px">
+              <label style="font-weight:900">Market Score</label>
+              <div id="marketScore" style="font-weight:900;font-size:20px;padding:8px;background:#fff8e6;border-radius:8px;margin-top:6px">—</div>
+              <div style="margin-top:10px;font-weight:900">اعلان‌ها</div>
+              <div id="alerts" style="margin-top:6px"></div>
             </div>
           </div>
         </div>
       </main>
 
       <aside class="right" id="rightCol">
-        <div class="bold">Rule Engine (حساس — runtime-decode)</div>
-        <div id="rulesUI" class="rules-ui"></div>
-        <div class="rules-actions">
-          <button id="addRuleBtn" class="btn small">افزودن قانون</button>
-          <button id="evalRuleBtn" class="btn small alt">ارزیابی</button>
+        <div style="font-weight:900;margin-bottom:8px">Rule Engine (حساس — runtime-decode)</div>
+        <div id="rulesUI" class="small" style="max-height:160px;overflow:auto;margin-bottom:8px"></div>
+        <div style="display:flex;gap:8px">
+          <button id="addRuleBtn" class="btn" style="flex:1;background:#fffbe6;color:#222">افزودن قانون</button>
+          <button id="evalRuleBtn" class="btn" style="flex:1;background:#efefef;color:#222">ارزیابی</button>
         </div>
 
-        <hr>
-
-        <div class="bold">Bookmarks</div>
-        <div id="bookmarks" class="bookmarks-list"></div>
-        <button id="bookmarkBtn" class="btn alt fullwidth">بوکمارک سریع</button>
+        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(0,0,0,0.06)">
+        <div style="font-weight:900;margin-bottom:6px">Bookmarks</div>
+        <div id="bookmarks" style="max-height:120px;overflow:auto"></div>
+        <div style="margin-top:8px"><button id="bookmarkBtn" class="btn" style="width:100%;background:#fffbe6;color:#222">بوکمارک سریع</button></div>
       </aside>
 
     </div>
 
-    <footer class="site-footer">منبع: تابان گوهر — این نسخه غیر رسمی است.</footer>
+    <footer style="text-align:center;color:#666;font-weight:800;font-size:12px;margin-top:12px">منبع: تابان گوهر — این نسخه غیر رسمی است.</footer>
   </div>
 
-  <script src="/app.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
