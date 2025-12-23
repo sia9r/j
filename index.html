@@ -1,144 +1,604 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>جواهری استقلال — داشبورد قیمت (غیر رسمی)</title>
-  <meta name="author" content="Mohammad Javad">
-  <meta name="description" content="نسخهٔ غیر رسمی — قیمت‌ها از تابان گوهر گرفته می‌شود">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>جواهری استقلال — داشبورد قیمت (غیر رسمی)</title>
+<meta name="author" content="Mohammad Javad">
+<meta name="description" content="نسخهٔ غیر رسمی — قیمت‌ها از تابان گوهر گرفته می‌شود">
+<style>
+:root{
+  --bg1:#fff7e6; --bg2:#f9e6b3; --gold:#b8860b; --gold-strong:#d4af37;
+  --card-bg: rgba(255,255,255,0.98); --muted:#6b4f00; --accent:#f9d976; --text:#222;
+}
+html,body{height:100%;margin:0;padding:0;font-family:"Vazirmatn",Tahoma,Arial,sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:18px auto;padding:18px;box-sizing:border-box}
+header.top{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;margin-bottom:14px;position:sticky;top:0;z-index:90;padding:12px;border-radius:10px;background:linear-gradient(135deg,var(--bg1),var(--bg2));backdrop-filter:blur(6px)}
+.brand{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+h1{margin:0;font-size:20px;color:var(--gold);font-weight:900}
+.subtitle{font-size:12px;color:#666;font-weight:800}
+.top-controls{display:flex;flex-direction:column;gap:10px;align-items:flex-end;min-width:220px}
+.price-input{background:var(--card-bg);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;align-items:stretch;border:2px solid rgba(212,175,55,0.14);min-width:220px}
+.price-input label{font-weight:800;color:var(--muted);font-size:13px;text-align:right}
+.visual-small { width: 12ch; max-width:100%; box-sizing:border-box; text-align:center; direction:ltr; font-weight:900; font-size:15px; padding:6px 8px; border-radius:8px; border:1px solid #ddd; background:#fff; }
+.input-row { display:flex; gap:8px; align-items:center; justify-content:flex-end; }
+.clear-btn { background:#efefef; border:1px solid #ddd; padding:4px 8px; border-radius:6px; cursor:pointer; font-weight:900; }
+.switch-row{display:flex;gap:10px;align-items:center;justify-content:flex-end}
+.switch-item{display:flex;gap:8px;align-items:center;background:var(--card-bg);padding:8px 10px;border-radius:10px;border:1px solid rgba(0,0,0,0.04)}
+.switch-label{font-weight:800;font-size:13px;color:var(--muted);min-width:90px;text-align:right}
+.tiny-toggle{width:44px;height:24px;border-radius:999px;background:#c0392b;position:relative;cursor:pointer;flex:0 0 auto}
+.tiny-toggle::before{content:"";position:absolute;left:2px;top:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .25s}
+.tiny-toggle.active{background:#27ae60}
+.tiny-toggle.active::before{transform:translateX(20px)}
+.tabs{display:flex;gap:10px;margin:12px 0 16px;flex-wrap:wrap}
+.tab{padding:10px 14px;border-radius:12px;background:transparent;border:2px solid transparent;font-weight:900;cursor:pointer;color:var(--muted);user-select:none}
+.tab.active{background:linear-gradient(90deg,var(--accent),#f39c12);color:#fff;box-shadow:0 10px 30px rgba(240,190,60,0.12)}
+.panel{background:var(--card-bg);border-radius:18px;padding:18px;box-shadow:0 18px 48px rgba(0,0,0,0.14);overflow:hidden}
+.panel-grid{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start}
+@media(max-width:980px){.panel-grid{grid-template-columns:1fr}} 
+.content{padding:6px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+.field{background:#fffbe6;border:2px solid var(--gold-strong);padding:10px;border-radius:12px;min-width:160px;flex:1}
+.field label{display:block;font-weight:800;color:var(--muted);font-size:14px;margin-bottom:8px;text-align:right}
+.field input,.field select{width:100%;padding:10px;border-radius:10px;border:1px solid #e6d6a0;font-weight:900;font-size:16px;text-align:center;background:transparent}
+.main-btn{background:linear-gradient(90deg,var(--accent),#f39c12);border:none;color:#fff;padding:12px 16px;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer}
+.side{padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff9e6);border:2px solid rgba(212,175,55,0.06)}
+.summary .big{font-size:22px;font-weight:900;color:var(--gold);text-align:right}
+.table{margin-top:12px;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.05)}
+table{width:100%;border-collapse:collapse;font-weight:800}
+thead th{background:#fff8e6;color:var(--muted);padding:10px 12px;text-align:right;font-size:14px}
+tbody td{padding:10px 12px;border-top:1px solid rgba(0,0,0,0.04);text-align:right;font-size:15px}
+tbody tr:hover{background:linear-gradient(90deg, rgba(255,250,220,0.6), rgba(255,250,220,0.4))}
+.price-cell{color:var(--gold);font-weight:900;font-size:15px;min-width:160px;text-align:right}
+.result-card{margin-top:8px;padding:14px;border-radius:12px;background:#fff8e6;border:1px solid rgba(212,175,55,0.06)}
+.big-number{font-size:28px;font-weight:900;color:var(--gold);text-align:center}
+.timestamp{font-size:13px;color:#666;margin-left:8px}
+footer{margin-top:18px;text-align:center;color:#666;font-weight:800;font-size:13px}
+@media(max-width:640px){.wrap{padding:12px}.top{padding:8px}.top-controls{min-width:0;align-items:stretch}.price-input{min-width:0}.tab{padding:8px 10px}.panel-grid{grid-template-columns:1fr}.side{order:2}.field{min-width:unset;width:100%}.main-btn{width:100%}.switch-item{justify-content:space-between;padding:10px}.input-row{justify-content:flex-start}}
+.dark{--bg1:#0f0f12;--bg2:#121217;--card-bg: rgba(6,6,6,0.6);--gold:#ffd973;--gold-strong:#f0c27b;--text:#eee;--muted:#f0c27b;background:linear-gradient(135deg,var(--bg1),var(--bg2))}
+.devwarn{background:#ffefef;padding:8px;border-radius:6px;margin-top:8px;color:#900}
+.canvas-wrap{border-radius:8px;background:linear-gradient(90deg,#fff,#fff9e6);padding:8px}
+</style>
 </head>
 <body>
-
-  <!-- ENTRY SCREEN -->
-  <div id="entryScreen" class="center">
-    <div class="card" role="dialog" aria-labelledby="entryTitle">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div>
-          <h1 id="entryTitle" style="margin:0;color:#6b4f00">جواهری استقلال — داشبورد</h1>
-          <div class="small">نسخهٔ غیر رسمی — سازنده: Mohammad Javad</div>
-        </div>
-        <div id="installHint" class="small" style="text-align:left"></div>
+  <div class="wrap" id="appRoot">
+    <header class="top" role="banner" aria-label="هدر">
+      <div class="brand">
+        <div><h1>جواهری استقلال — نسخه رسمی</h1></div>
+        <div class="subtitle">داشبورد قیمت</div>
       </div>
-
-      <div class="entry-grid">
-        <div class="entry" aria-label="فروشگاه">
-          <h2 style="margin:0;color:#6b4f00">فروشگاه (Shop)</h2>
-          <p class="small">نمای مینیمال مناسب ویترین: نمایش بزرگ قیمت و تاریخچهٔ محلی.</p>
-          <div style="margin-top:auto"><button class="btn" data-mode="shop">ورود به فروشگاه</button></div>
-        </div>
-
-        <div class="entry" aria-label="کامل">
-          <h2 style="margin:0;color:#6b4f00">کامل و تحلیلی (Full)</h2>
-          <p class="small">داشبورد کامل با Rule Engine، نمودار، Timeline و PWA.</p>
-          <div style="margin-top:auto"><button class="btn" data-mode="full">ورود به نسخهٔ کامل</button></div>
-        </div>
-      </div>
-
-      <div style="margin-top:10px;text-align:center" class="small">انتخاب شما در این دستگاه ذخیره می‌شود — منبع قیمت‌ها: تابان گوهر.</div>
-    </div>
-  </div>
-
-  <!-- APP -->
-  <div id="appRoot" class="hidden" aria-hidden="true">
-    <div class="app" role="application" aria-label="داشبورد">
-
-      <header>
-        <div>
-          <h2 style="margin:0;color:#6b4f00">جواهری استقلال — داشبورد</h2>
-          <div class="small">سازنده: Mohammad Javad — نسخهٔ غیر رسمی</div>
-        </div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <div class="small">اینترنت: <span id="netText">قطع</span></div>
-          <div class="small">داده: <span id="freshText">ناموجود</span></div>
-          <button id="backBtn" class="btn">بازگشت به انتخاب حالت</button>
-        </div>
-      </header>
-
-      <aside class="left" id="leftCol">
-        <div style="text-align:center">
-          <div id="shopPrice" style="font-weight:900;font-size:28px">— تومان</div>
-          <div class="small">قیمت ۱۸ عیار</div>
-          <div style="margin-top:8px;display:flex;gap:8px;justify-content:center">
-            <button id="fetchBtn" class="btn">دریافت</button>
-            <button id="saveBtn" class="btn" style="background:#efefef;color:#222">ذخیره</button>
+      <div class="top-controls" role="region" aria-label="کنترل‌های بالا">
+        <div class="price-input" title="قیمت ۱۸ و ۲۴ را وارد کنید (هر کدام را وارد کنید دیگری خودکار می‌شود)">
+          <div class="input-row">
+            <label for="price18">قیمت ۱۸ عیار</label>
+            <div style="display:flex;gap:6px;align-items:center">
+              <input id="price18" class="visual-small" inputmode="numeric" placeholder="مثلاً 10,000,000" aria-label="قیمت ۱۸ عیار" />
+              <button type="button" class="clear-btn" data-target="price18" title="پاک کردن">×</button>
+            </div>
+          </div>
+          <div class="input-row">
+            <label for="price24">قیمت ۲۴ عیار</label>
+            <div style="display:flex;gap:6px;align-items:center">
+              <input id="price24" class="visual-small" inputmode="numeric" placeholder="مثلاً 13,333,333" aria-label="قیمت ۲۴ عیار" />
+              <button type="button" class="clear-btn" data-target="price24" title="پاک کردن">×</button>
+            </div>
           </div>
         </div>
 
-        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(0,0,0,0.06)">
-
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-          <div style="font-weight:900">تاریخچه</div>
-          <div><button id="clearHistory" style="background:#fff;border:1px solid #eee;padding:6px;border-radius:8px">پاک</button></div>
+        <div class="switch-row" aria-hidden="false">
+          <div class="switch-item" role="group" aria-label="تم">
+            <div class="switch-label">حالت تاریک</div>
+            <div id="themeToggle" class="tiny-toggle" role="switch" aria-checked="false" tabindex="0" aria-label="تغییر حالت تاریک"></div>
+          </div>
+          <div class="switch-item" role="group" aria-label="نمایش زمان">
+            <div class="switch-label">نمایش تاریخ و زمان</div>
+            <div id="timeToggleTop" class="tiny-toggle" role="switch" aria-checked="false" tabindex="0" aria-label="نمایش تاریخ و زمان"></div>
+          </div>
         </div>
-        <div id="historyList" style="max-height:44vh;overflow:auto"></div>
 
-        <div id="devNotice" class="devwarn hidden">هشدار: DevTools باز شده — قابلیت‌های تحلیلی غیرفعال شدند.</div>
-      </aside>
+        <div style="display:flex;justify-content:flex-end">
+          <div id="headerTimestamp" class="timestamp" style="display:none">—</div>
+        </div>
+      </div>
+    </header>
 
-      <main class="main" id="mainCol">
-        <div id="fullUI">
-          <div style="display:flex;gap:12px;align-items:center">
-            <div style="flex:1">
-              <label style="font-weight:900">قیمت ۱۸ (تومان)</label>
-              <input id="price18" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6d6a0;text-align:center;font-weight:900" />
-            </div>
-            <div style="flex:1">
-              <label style="font-weight:900">قیمت ۲۴ (تومان)</label>
-              <input id="price24" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6d6a0;text-align:center;font-weight:900" />
-            </div>
-            <div style="width:200px">
-              <label style="font-weight:900">Explain</label>
-              <div style="display:flex;gap:8px;align-items:center">
-                <div id="explainToggle" class="tiny-toggle" role="switch" tabindex="0"></div>
-                <div class="small">نمایش توضیحات</div>
+    <div class="tabs" role="tablist" aria-label="مودها">
+      <div class="tab active" data-mode="parsian" role="tab" aria-selected="true">پارسیان</div>
+      <div class="tab" data-mode="shamsh" role="tab" aria-selected="false">شمش</div>
+      <div class="tab" data-mode="fabric" role="tab" aria-selected="false">محاسبه طلا</div>
+    </div>
+
+    <section class="panel" role="main">
+      <div class="panel-grid">
+        <div class="content">
+          <div style="margin-bottom:14px; text-align:center;">
+            <h2 style="margin:0 0 6px 0">قیمت یک گرم 18 طلا در این لحظه</h2>
+            <div class="canvas-wrap">
+              <div class="price-display-row" style="display:flex;gap:8px;align-items:center;justify-content:center">
+                <div id="gram18_price_now" style="font-size:31px;color:#3ec854;font-weight:bold">در حال دریافت...</div>
+                <button id="fetchPriceBtn" class="main-btn" style="padding:8px 10px;font-size:14px">دریافت قیمت</button>
               </div>
             </div>
           </div>
 
-          <div style="margin-top:12px">
-            <label style="font-weight:900">نمودار</label>
-            <div style="margin-top:8px;border-radius:8px;background:linear-gradient(90deg,#fff,#fff9e6);padding:6px">
-              <canvas id="priceChart"></canvas>
-              <div id="chartFallback" class="small hidden" style="color:#b00;padding:8px">نمودار در دسترس نیست</div>
+          <!-- PARSIAN -->
+          <div class="mode" id="parsian" data-mode="parsian">
+            <div class="controls">
+              <div class="field">
+                <label>عیار محاسبه (پیش‌فرض ۱۸)</label>
+                <select id="parsianPurity">
+                  <option value="18" selected>۱۸</option><option value="19">۱۹</option><option value="20">۲۰</option>
+                  <option value="21">۲۱</option><option value="22">۲۲</option><option value="23">۲۳</option>
+                  <option value="24">۲۴</option><option value="custom">دلخواه</option>
+                </select>
+                <input id="parsianPurityCustom" placeholder="عیار دلخواه" style="display:none;margin-top:8px" />
+              </div>
+
+              <div class="field" style="min-width:150px">
+                <div style="display:flex;align-items:center;justify-content:center;">
+                  <div id="parsianTolToggle" class="tiny-toggle" role="switch" aria-checked="false" title="تلورانس پنهان" tabindex="0"></div>
+                  <select id="parsianTol" style="display:none;padding:8px;background:#fffbe6;border-radius:8px;border:1px solid var(--gold-strong);font-weight:800;margin-right:8px">
+                    <option value="20000">۲۰٬۰۰۰</option><option value="50000">۵۰٬۰۰۰</option>
+                    <option value="70000">۷۰٬۰۰۰</option><option value="100000">۱۰۰٬۰۰۰</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field" style="min-width:180px">
+                <label>فیلتر وزن دلخواه (گرم)</label>
+                <div style="display:flex;gap:8px;align-items:center;justify-content:center">
+                  <input id="parsianCustomWeight" placeholder="مثلاً 1.2" class="visual-small" />
+                  <button class="clear-btn" data-target="parsianCustomWeight" title="پاک کردن">×</button>
+                </div>
+              </div>
+
+              <div style="flex:0 0 140px;display:flex;align-items:center;">
+                <button class="main-btn" id="parsianCalc">محاسبه</button>
+              </div>
+            </div>
+
+            <div class="table" id="parsianTableWrap" aria-live="polite"></div>
+          </div>
+
+          <!-- SHAMSH -->
+          <div class="mode" id="shamsh" data-mode="shamsh" style="display:none">
+            <div class="controls">
+              <div class="field">
+                <label>عیار محاسبه (پیش‌فرض ۲۴)</label>
+                <select id="shamshPurity">
+                  <option value="18">۱۸</option><option value="19">۱۹</option><option value="20">۲۰</option>
+                  <option value="21">۲۱</option><option value="22">۲۲</option><option value="23">۲۳</option>
+                  <option value="24" selected>۲۴</option><option value="custom">دلخواه</option>
+                </select>
+                <input id="shamshPurityCustom" placeholder="عیار دلخواه" style="display:none;margin-top:8px" />
+              </div>
+
+              <div class="field" style="min-width:150px">
+                <div style="display:flex;align-items:center;justify-content:center;">
+                  <div id="shamshTolToggle" class="tiny-toggle" role="switch" aria-checked="false" title="تلورانس پنهان" tabindex="0"></div>
+                  <select id="shamshTol" style="display:none;padding:8px;background:#fffbe6;border-radius:8px;border:1px solid var(--gold-strong);font-weight:800;margin-right:8px">
+                    <option value="20000">۲۰٬۰۰۰</option><option value="50000">۵۰٬۰۰۰</option>
+                    <option value="70000">۷۰٬۰۰۰</option><option value="100000">۱۰۰٬۰۰۰</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field" style="min-width:180px">
+                <label>فیلتر وزن دلخواه (گرم)</label>
+                <div style="display:flex;gap:8px;align-items:center;justify-content:center">
+                  <input id="shamshCustomWeight" placeholder="مثلاً 1.0" class="visual-small" />
+                  <button class="clear-btn" data-target="shamshCustomWeight" title="پاک کردن">×</button>
+                </div>
+              </div>
+
+              <div style="flex:0 0 140px;display:flex;align-items:center;">
+                <button class="main-btn" id="shamshCalc">محاسبه</button>
+              </div>
+            </div>
+
+            <div class="table" id="shamshTableWrap" aria-live="polite"></div>
+          </div>
+
+          <!-- FABRICATION -->
+          <div class="mode" id="fabric" data-mode="fabric" style="display:none">
+            <div class="controls">
+              <div class="field">
+                <label>وزن (گرم)</label>
+                <div style="display:flex;gap:8px;align-items:center;justify-content:center">
+                  <input id="fabWeight" placeholder="مثلاً 2.5" class="visual-small">
+                  <button class="clear-btn" data-target="fabWeight" title="پاک کردن">×</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>عیار قیمت (استفاده از قیمت‌های بالا)</label>
+                <select id="fabPurity">
+                  <option value="18" selected>۱۸</option><option value="19">۱۹</option><option value="20">۲۰</option>
+                  <option value="21">۲۱</option><option value="22">۲۲</option><option value="23">۲۳</option>
+                  <option value="24">۲۴</option><option value="custom">دلخواه</option>
+                </select>
+                <input id="fabPurityCustom" placeholder="عیار دلخواه" style="display:none;margin-top:8px" />
+              </div>
+
+              <div class="field">
+                <label>درصد اجرت</label>
+                <div style="display:flex;gap:8px;align-items:center;justify-content:center">
+                  <input id="fabWage" placeholder="مثلاً 10" value="10" class="visual-small">
+                  <button class="clear-btn" data-target="fabWage" title="پاک کردن">×</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>درصد سود</label>
+                <div style="display:flex;gap:8px;align-items:center;justify-content:center">
+                  <input id="fabProfit" placeholder="مثلاً 7" value="7" class="visual-small">
+                  <button class="clear-btn" data-target="fabProfit" title="پاک کردن">×</button>
+                </div>
+              </div>
+
+              <div style="flex:0 0 140px;display:flex;align-items:center;">
+                <button class="main-btn" id="fabCalc">محاسبه</button>
+              </div>
+            </div>
+
+            <div class="result-card" aria-live="polite">
+              <div class="big-number" id="fabFinal">—</div>
+              <div style="display:flex;gap:8px;margin-top:10px;justify-content:space-around;flex-wrap:wrap">
+                <div class="meta">قیمت خالص: <span id="fabPure">—</span></div>
+                <div class="meta">اجرت: <span id="fabWageOut">—</span></div>
+                <div class="meta">سود: <span id="fabProfitOut">—</span></div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:8px;justify-content:space-around;flex-wrap:wrap">
+                <div class="meta">مالیات: <span id="fabTax">—</span></div>
+              </div>
             </div>
           </div>
 
-          <div style="margin-top:12px;display:flex;gap:12px">
-            <div style="flex:1">
-              <label style="font-weight:900">Timeline</label>
-              <div id="timeline" style="max-height:160px;overflow:auto;background:#fff9e6;padding:6px;border-radius:8px"></div>
+        </div>
+
+        <aside class="side" aria-label="خلاصه">
+          <div class="summary">
+            <div class="big">قیمت فعال: <span id="activePriceDisplay">—</span></div>
+            <div class="meta">عیار فعال و تبدیل خودکار</div>
+            <div class="meta" style="font-size:13px;color:#666">نکته: برای محاسبه از قیمت‌های بالای صفحه استفاده می‌شود.</div>
+            <div style="height:1px"></div>
+            <div style="margin-top:8px;display:flex;align-items:center;gap:8px;justify-content:flex-start">
+              <div class="meta">آخرین محاسبه:</div>
+              <div id="asideTimestamp" class="timestamp">—</div>
             </div>
-            <div style="width:320px">
-              <label style="font-weight:900">Market Score</label>
-              <div id="marketScore" style="font-weight:900;font-size:20px;padding:8px;background:#fff8e6;border-radius:8px;margin-top:6px">—</div>
-              <div style="margin-top:10px;font-weight:900">اعلان‌ها</div>
-              <div id="alerts" style="margin-top:6px"></div>
+            <div style="margin-top:12px">
+              <div style="font-weight:900;margin-bottom:6px">تاریخچه محلی</div>
+              <div id="historyLocal" style="max-height:220px;overflow:auto"></div>
+              <div style="margin-top:8px;display:flex;gap:8px">
+                <button id="exportCsv" class="main-btn" style="background:#fffbe6;color:#222">صادر کردن CSV</button>
+                <button id="clearLocal" class="main-btn" style="background:#efefef;color:#222">پاک تاریخچه</button>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </aside>
 
-      <aside class="right" id="rightCol">
-        <div style="font-weight:900;margin-bottom:8px">Rule Engine (حساس — runtime-decode)</div>
-        <div id="rulesUI" class="small" style="max-height:160px;overflow:auto;margin-bottom:8px"></div>
-        <div style="display:flex;gap:8px">
-          <button id="addRuleBtn" class="btn" style="flex:1;background:#fffbe6;color:#222">افزودن قانون</button>
-          <button id="evalRuleBtn" class="btn" style="flex:1;background:#efefef;color:#222">ارزیابی</button>
-        </div>
+      </div>
 
-        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(0,0,0,0.06)">
-        <div style="font-weight:900;margin-bottom:6px">Bookmarks</div>
-        <div id="bookmarks" style="max-height:120px;overflow:auto"></div>
-        <div style="margin-top:8px"><button id="bookmarkBtn" class="btn" style="width:100%;background:#fffbe6;color:#222">بوکمارک سریع</button></div>
-      </aside>
-
-    </div>
-
-    <footer style="text-align:center;color:#666;font-weight:800;font-size:12px;margin-top:12px">منبع: تابان گوهر — این نسخه غیر رسمی است.</footer>
+      <footer>--------------------------------------------------------------------------</footer>
+    </section>
   </div>
 
-  <script src="app.js" defer></script>
+<script>
+/* ------------------------------
+  یک فایل تک‌تکه کامل — شامل:
+  - پارسیان، شمش، محاسبه‌گر
+  - تاریخچه محلی (localStorage)
+  - دریافت قیمت از تابان‌گوهر (single fetch + manual)
+  - Rule Engine runtime-decode پایه (قابل توسعه)
+  - Fingerprint محلی و تشخیص DevTools
+  - امکان روشن/خاموش کردن featureها در ابتدای کد (FEATURES)
+  ------------------------------*/
+
+/* ---------- CONFIG / FLAGS ---------- */
+const FEATURES = {
+  ruleEngine: true,
+  fingerprintLock: true,
+  devtoolProtect: true,
+  autosFetchEveryMin: 5, // هر چند دقیقه قیمت را مجدداً بخواند (0 برای خاموش)
+};
+
+/* ---------- helpers ---------- */
+const fmt = n => { try { return Number(n).toLocaleString('en-US'); } catch(e){ return n; } };
+const unfmt = s => { if(s===undefined||s===null) return NaN; const t=String(s).replace(/,/g,'').trim(); if(t==='') return NaN; const n=Number(t); return isFinite(n)?n:NaN; };
+const $ = id => document.getElementById(id);
+const nowISO = () => new Date().toISOString();
+
+/* ---------- DOM refs ---------- */
+const price18Input = $('price18'), price24Input = $('price24'), gramDisplay = $('gram18_price_now'), fetchBtn = $('fetchPriceBtn');
+const parsianTableWrap = $('parsianTableWrap'), shamshTableWrap = $('shamshTableWrap');
+const parsianPurity = $('parsianPurity'), parsianPurityCustom = $('parsianPurityCustom');
+const shamshPurity = $('shamshPurity'), shamshPurityCustom = $('shamshPurityCustom');
+const fabWeightInput = $('fabWeight'), fabWageInput = $('fabWage'), fabProfitInput = $('fabProfit'), fabFinal = $('fabFinal');
+const asideHistory = $('historyLocal'), exportCsvBtn = $('exportCsv'), clearLocalBtn = $('clearLocal');
+const activePriceDisplay = $('activePriceDisplay'), asideTimestamp = $('asideTimestamp'), headerTimestamp = $('headerTimestamp');
+const themeToggle = $('themeToggle'), timeToggleTop = $('timeToggleTop');
+
+/* ---------- weights ---------- */
+const weights = [0.05,0.07,0.100,0.150,0.170,0.200,0.250,0.300,0.350,0.400,0.450,0.500,0.550,0.600,0.650,0.700,0.750,0.800,0.850,0.900,0.950,1.0,1.100,1.150,1.200,1.250,1.300,1.350,1.400,1.450,1.500,1.550,1.600,1.650,1.700,1.750,1.800,1.850,1.900,1.950,2.00,3.00,4.00];
+
+/* ---------- storage ---------- */
+const PREFIX = 'gold_v2_';
+const storage = {
+  get(k){ try{ return JSON.parse(localStorage.getItem(PREFIX+k)); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(PREFIX+k, JSON.stringify(v)); return true; }catch(e){return false;} },
+  rm(k){ localStorage.removeItem(PREFIX+k); }
+};
+
+/* ---------- sync 18 <-> 24 ---------- */
+function syncFrom18(){
+  const v = unfmt(price18Input.value);
+  if(isNaN(v)){ price24Input.value=''; updateActivePriceDisplay(); return; }
+  const p24 = v*(24/18);
+  price24Input.value = fmt(Math.round(p24));
+  updateActivePriceDisplay();
+}
+function syncFrom24(){
+  const v = unfmt(price24Input.value);
+  if(isNaN(v)){ price18Input.value=''; updateActivePriceDisplay(); return; }
+  const p18 = v*(18/24);
+  price18Input.value = fmt(Math.round(p18));
+  updateActivePriceDisplay();
+}
+price18Input.addEventListener('input',(e)=>{ const raw = e.target.value.replace(/,/g,''); price18Input.value = raw===''? '': fmt(Number(raw)); const p = unfmt(price18Input.value); if(!isNaN(p) && gramDisplay){ gramDisplay.textContent = fmt(Math.round(p)) + ' تومان'; } syncFrom18(); });
+price24Input.addEventListener('input',(e)=>{ const raw = e.target.value.replace(/,/g,''); price24Input.value = raw===''? '': fmt(Number(raw)); syncFrom24(); });
+
+/* ---------- parse price per purity ---------- */
+function getPricePerGramForPurity(purity, prefer18=true){
+  let p18 = unfmt(price18Input.value);
+  let p24 = unfmt(price24Input.value);
+  if(!isNaN(p18) && prefer18) return p18 * (purity/18);
+  if(!isNaN(p24) && !prefer18) return p24 * (purity/24);
+  if(!isNaN(p18)) return p18 * (purity/18);
+  if(!isNaN(p24)) return p24 * (purity/24);
+  return NaN;
+}
+
+/* ---------- render tables ---------- */
+function renderParsianTable(filteredWeight){
+  const purity = (parsianPurity.value==='custom'? Number(parsianPurityCustom.value) : Number(parsianPurity.value)) || 18;
+  const pricePerGram = getPricePerGramForPurity(purity,true);
+  if(isNaN(pricePerGram)){ parsianTableWrap.innerHTML = '<div style="padding:12px;color:#b00;font-weight:900">لطفاً قیمت ۱۸ یا ۲۴ را در بالا وارد کنید.</div>'; return; }
+  let html = '<table aria-label="جدول پارسیان"><thead><tr><th>وزن (گرم)</th><th>قیمت نهایی</th></tr></thead><tbody>';
+  const list = filteredWeight ? [Number(filteredWeight)] : weights;
+  list.forEach(w=>{
+    const goldCost = +(w * pricePerGram);
+    const wage1 = 50000; const tax = +((goldCost + wage1) * 0.1);
+    const wage2 = 100000;
+    const total = Math.round(goldCost + wage1 + tax + wage2);
+    html += `<tr><td>${w.toFixed(3)}</td><td class="price-cell">${fmt(total)} تومان</td></tr>`;
+  });
+  html += '</tbody></table>';
+  parsianTableWrap.innerHTML = html;
+}
+function renderShamshTable(filteredWeight){
+  const purity = (shamshPurity.value==='custom'? Number(shamshPurityCustom.value) : Number(shamshPurity.value)) || 24;
+  const pricePerGram = getPricePerGramForPurity(purity,false);
+  if(isNaN(pricePerGram)){ shamshTableWrap.innerHTML = '<div style="padding:12px;color:#b00;font-weight:900">لطفاً قیمت ۱۸ یا ۲۴ را در بالا وارد کنید.</div>'; return; }
+  let html = '<table aria-label="جدول شمش"><thead><tr><th>وزن (گرم)</th><th>قیمت نهایی</th></tr></thead><tbody>';
+  const list = filteredWeight ? [Number(filteredWeight)] : weights;
+  list.forEach(w=>{
+    const goldCost = +(w * pricePerGram);
+    const ojrat = (w >= 1.0) ? 630000 : 650000;
+    const base = goldCost + ojrat; const tax = +(base * 0.1);
+    const total = Math.round(base + tax);
+    html += `<tr><td>${w.toFixed(3)}</td><td class="price-cell">${fmt(total)} تومان</td></tr>`;
+  });
+  html += '</tbody></table>';
+  shamshTableWrap.innerHTML = html;
+}
+
+/* ---------- fabricate calculation ---------- */
+function fabricateCalculate(){
+  const weight = parseFloat(fabWeightInput.value);
+  const purity = ($('fabPurity').value==='custom'? Number($('fabPurityCustom').value) : Number($('fabPurity').value)) || 18;
+  const pricePerGram = getPricePerGramForPurity(purity,true);
+  const wagePercent = parseFloat(fabWageInput.value);
+  const profitPercent = parseFloat(fabProfitInput.value);
+  if(isNaN(weight) || isNaN(pricePerGram) || isNaN(wagePercent) || isNaN(profitPercent)){
+    fabFinal.textContent = '⚠️ لطفاً مقادیر معتبر وارد کنید.';
+    return;
+  }
+  const pure = +(weight * pricePerGram);
+  const wage = +(pure * (wagePercent/100));
+  const profit = +((pure + wage) * (profitPercent/100));
+  const tax = +(0.1 * (wage + profit));
+  const total = Math.round(pure + wage + profit + tax);
+  fabFinal.textContent = fmt(total) + ' تومان';
+  $('fabPure').textContent = fmt(Math.round(pure)) + ' تومان';
+  $('fabWageOut').textContent = fmt(Math.round(wage)) + ' تومان';
+  $('fabProfitOut').textContent = fmt(Math.round(profit)) + ' تومان';
+  $('fabTax').textContent = fmt(Math.round(tax)) + ' تومان';
+  updateTimestamp();
+}
+
+/* ---------- timestamp ---------- */
+function updateTimestamp(){ const now = (new Date()).toLocaleString(); if(headerTimestamp) headerTimestamp.textContent = now; if(asideTimestamp) asideTimestamp.textContent = now; }
+
+/* ---------- history/local ---------- */
+async function pushLocalHistory(entry){
+  const h = storage.get('history')||[];
+  h.unshift(entry); h.splice(500);
+  storage.set('history', h);
+  renderLocalHistory();
+}
+function renderLocalHistory(){
+  const list = storage.get('history')||[];
+  const el = asideHistory;
+  el.innerHTML = '';
+  if(!list.length){ el.innerHTML = '<div class="small">تاریخی ثبت نشده</div>'; return; }
+  list.slice(0,200).forEach(it=>{
+    const d = document.createElement('div'); d.className='history-item';
+    d.innerHTML = `<div class="small">${new Date(it.date).toLocaleString()}</div><div>۱۸: ${it.p18?fmt(it.p18)+' تومان':'—'}</div><div>۲۴: ${it.p24?fmt(it.p24)+' تومان':'—'}</div>`;
+    el.appendChild(d);
+  });
+}
+$('clearLocal').addEventListener('click', ()=>{ if(confirm('پاک شود؟')){ storage.set('history',[]); renderLocalHistory(); notify('تاریخچه پاک شد'); }});
+$('exportCsv').addEventListener('click', ()=>{ const arr = storage.get('history')||[]; if(!arr.length) return alert('تاریخی موجود نیست'); let csv = 'date,p18,p24\n'; arr.forEach(r=> csv += `${r.date},${r.p18||''},${r.p24||''}\n`); const blob = new Blob([csv],{type:'text/csv'}); const url = URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='history.csv'; a.click(); URL.revokeObjectURL(url); });
+
+/* ---------- notify ---------- */
+function notify(msg){ const alerts = $('alerts'); if(!alerts) return; const n = document.createElement('div'); n.textContent = msg; n.style.padding='8px'; n.style.background='#fffbe6'; n.style.marginBottom='6px'; alerts.prepend(n); setTimeout(()=>n.remove(),4000); try{ if(Notification && Notification.permission !== 'denied') Notification.requestPermission().then(p=>{ if(p==='granted') new Notification('اطلاع',{body:msg}); }); }catch(e){} }
+
+/* ---------- DevTools detection ---------- */
+let devOpen=false;
+function detectDevTools(){
+  try{
+    const threshold=160; let open=false;
+    if(window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) open=true;
+    const t0 = performance.now(); debugger; const took = performance.now()-t0; if(took>100) open=true;
+    devOpen=open;
+    if(devOpen && FEATURES.devtoolProtect){ $('devNotice').classList.remove('hidden'); FEATURES.ruleEngine=false; document.querySelectorAll('.main-btn').forEach(b=>b.disabled=true); }
+    else $('devNotice').classList.add('hidden');
+  }catch(e){}
+}
+setInterval(detectDevTools,2000);
+
+/* ---------- fingerprint ---------- */
+async function fingerprintCheck(){
+  if(!FEATURES.fingerprintLock) return true;
+  try{
+    const data = navigator.userAgent + '|' + navigator.platform + '|' + Intl.DateTimeFormat().resolvedOptions().timeZone + '|' + screen.width + 'x' + screen.height;
+    const enc = new TextEncoder().encode(data);
+    const hash = await crypto.subtle.digest('SHA-256', enc);
+    const hex = Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    const stored = storage.get('fp');
+    if(!stored){ storage.set('fp', hex); return true; }
+    return stored === hex;
+  }catch(e){ return true; }
+}
+
+/* ---------- Rule Engine: runtime decode (parts assembled) ---------- */
+const RULE_PARTS = [
+"function RuleExec(rules, ctx){ var out=[]; for(var i=0;i<rules.length;i++){ try{ var r=rules[i]; if(!r.active) continue; var e=r.expr; if(e.type==='gt'){ if(Number(ctx[e.key])>Number(e.value)) out.push(r); } else if(e.type==='lt'){ if(Number(ctx[e.key])<Number(e.value)) out.push(r); } else if(e.type==='pct_change'){ var hrs=Number(e.hours)||1; var thr=Number(e.value)||0; var hist=ctx.history||[]; if(hist.length){ var cutoff=Date.now()-hrs*3600*1000; var past=null; for(var k=0;k<hist.length;k++){ if(new Date(hist[k].date).getTime()<=cutoff){ past=hist[k]; break; } } if(!past) past=hist[hist.length-1]; if(past){ var prev=Number(past[e.key])||NaN; var cur=Number(ctx[e.key])||NaN; if(!isNaN(prev)&&prev!==0){ var pct=((cur-prev)/prev)*100; if(pct>thr) out.push(r); } } } } } catch(err){ console.warn('rule-err',err); } } return out; }",
+"function RuleExplain(r){ try{ var e=r.expr; if(e.type==='gt') return e.key+' > '+e.value; if(e.type==='lt') return e.key+' < '+e.value; if(e.type==='pct_change') return e.key+' افزایش بیش از '+e.value+'% در '+e.hours+' ساعت'; return JSON.stringify(e);}catch(e){return '—';}}",
+"return { Exec: RuleExec, Explain: RuleExplain };"
+];
+let RuleEngine = null;
+function loadRuleEngine(){
+  try{
+    const src = RULE_PARTS.join('');
+    const fn = new Function(src);
+    RuleEngine = fn();
+    window._RuleEngine = RuleEngine;
+  }catch(e){ console.warn('rule load err', e); }
+}
+if(FEATURES.ruleEngine) loadRuleEngine();
+
+/* ---------- rules UI (simple) ---------- */
+function renderRulesUI(){
+  const arr = storage.get('rules')||[]; const el = $('rulesUI'); el.innerHTML=''; if(!arr.length){ el.innerHTML='<div class="small">قانونی تعریف نشده</div>'; return; } arr.forEach(r=>{ const d=document.createElement('div'); d.className='history-item'; d.innerHTML=`<div style="display:flex;justify-content:space-between"><div style="font-weight:900">${r.name}</div><div><button data-id="${r.id}" class="delRule">حذف</button></div></div><div class="small">${JSON.stringify(r.expr)}</div>`; el.appendChild(d); }); document.querySelectorAll('.delRule').forEach(b=>b.addEventListener('click',e=>{ const id=Number(e.target.dataset.id); const list=storage.get('rules')||[]; storage.set('rules', list.filter(x=>x.id!==id)); renderRulesUI(); }));
+}
+document.getElementById('addRuleBtn').addEventListener('click', ()=>{ if(!FEATURES.ruleEngine) return alert('Rule Engine غیرفعال'); const name = prompt('نام قانون'); if(!name) return; const type = prompt('نوع: gt / lt / pct_change'); if(!type) return; const key = prompt('کلید: p18 یا p24'); if(!key) return; const expr={type,key}; if(type==='gt'||type==='lt') expr.value=Number(prompt('مقدار')); if(type==='pct_change'){ expr.hours=Number(prompt('ساعت'))||1; expr.value=Number(prompt('درصد'))||0 } const list=storage.get('rules')||[]; list.unshift({id:Date.now(),name,expr,active:true}); storage.set('rules',list); renderRulesUI(); });
+document.getElementById('evalRuleBtn').addEventListener('click', async ()=>{ if(!FEATURES.ruleEngine) return alert('غیرفعال'); const p18 = unfmt(price18Input.value) || unfmt($('shopPrice').textContent); const p24 = unfmt(price24Input.value) || Math.round(p18*(24/18)); const hist = storage.get('history')||[]; const rules = storage.get('rules')||[]; let triggered=[]; if(window._RuleEngine && typeof window._RuleEngine.Exec==='function'){ triggered = window._RuleEngine.Exec(rules,{p18,p24,history:hist}); } else { for(const r of rules){ if(r.expr.type==='gt' && (p18>Number(r.expr.value))) triggered.push(r); } } $('alerts').innerHTML=''; if(triggered.length){ triggered.forEach(t=>{ const el = document.createElement('div'); el.className='history-item'; el.textContent = 'قانون فعال: '+t.name+' — '+(window._RuleEngine?window._RuleEngine.Explain(t):JSON.stringify(t.expr)); $('alerts').appendChild(el); pushLocalHistory({date:nowISO(),p18,p24}); }); } else $('alerts').innerHTML = '<div class="small">هشدار فعال وجود ندارد</div>'; });
+
+/* ---------- fetching price (tabangohar) ---------- */
+let lastFetch = null;
+async function updatePriceFromRemote(shouldSetInput=true){
+  const url = "https://tabangohar.com/GheymatKhan/prices_in_table.html?v=" + (new Date().toISOString().substring(0,16));
+  try{
+    const r = await fetch(url, { headers: {'Content-Type':'application/x-www-form-urlencoded'} });
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const json = await r.json();
+    let raw = parseFloat(json["c"]);
+    if(!isFinite(raw)) throw new Error('invalid');
+    if(Math.abs(raw) < 100000) raw = raw*1000;
+    const p18 = Math.round(raw), p24 = Math.round(p18*(24/18));
+    lastFetch = new Date(); updateTimestamp();
+    if(shouldSetInput){
+      price18Input.value = fmt(p18);
+      price24Input.value = fmt(p24);
+      gramDisplay.textContent = fmt(p18) + ' تومان';
+      pushLocalHistory({date: nowISO(), p18, p24});
+      renderParsianTable(null); renderShamshTable(null);
+    }
+    return {p18,p24};
+  }catch(e){
+    console.warn('updatePrice err', e);
+    notify('خطا در دریافت قیمت: ' + String(e));
+    return null;
+  }
+}
+fetchBtn.addEventListener('click', ()=> updatePriceFromRemote(true));
+
+/* ---------- auto-calc and listeners ---------- */
+document.querySelectorAll('.tiny-toggle').forEach(t=>{ t.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); t.click(); } }); });
+document.addEventListener('click', function(e){ const btn = e.target.closest('.clear-btn'); if(!btn) return; const targetId = btn.getAttribute('data-target'); if(targetId){ const el = document.getElementById(targetId); if(el){ el.value = ''; el.dispatchEvent(new Event('input')); } } });
+price18Input.addEventListener('input', ()=>{ updateActivePriceDisplay(); });
+price24Input.addEventListener('input', ()=>{ updateActivePriceDisplay(); });
+
+$('parsianCalc').addEventListener('click', ()=>{ const w = $('parsianCustomWeight').value.trim(); renderParsianTable(w? Number(w) : null); updateTimestamp(); });
+$('shamshCalc').addEventListener('click', ()=>{ const w = $('shamshCustomWeight').value.trim(); renderShamshTable(w? Number(w) : null); updateTimestamp(); });
+$('fabCalc').addEventListener('click', ()=>{ fabricateCalculate(); updateTimestamp(); });
+
+document.querySelectorAll('.wrap input, .wrap select').forEach(el=>{ if(!el.dataset._autocalc){ el.addEventListener('input', ()=>{}); el.dataset._autocalc='1'; } });
+
+/* ---------- update displays ---------- */
+function updateActivePriceDisplay(){
+  const active = document.querySelector('.tab.active').dataset.mode;
+  let pricePerGram = NaN, purity = 18;
+  if(active==='parsian'){
+    purity = (parsianPurity.value==='custom'? Number(parsianPurityCustom.value): Number(parsianPurity.value)) || 18;
+    const p18 = unfmt(price18Input.value);
+    if(!isNaN(p18)) pricePerGram = p18*(purity/18);
+    else { const p24 = unfmt(price24Input.value); if(!isNaN(p24)) pricePerGram = p24*(purity/24); }
+  } else if(active==='shamsh'){
+    purity = (shamshPurity.value==='custom'? Number(shamshPurityCustom.value): Number(shamshPurity.value)) || 24;
+    const p24 = unfmt(price24Input.value);
+    if(!isNaN(p24)) pricePerGram = p24*(purity/24);
+    else { const p18 = unfmt(price18Input.value); if(!isNaN(p18)) pricePerGram = p18*(purity/18); }
+  } else {
+    purity = ($('fabPurity').value==='custom'? Number($('fabPurityCustom').value): Number($('fabPurity').value)) || 18;
+    const p18 = unfmt(price18Input.value);
+    if(!isNaN(p18)) pricePerGram = p18*(purity/18);
+    else { const p24 = unfmt(price24Input.value); if(!isNaN(p24)) pricePerGram = p24*(purity/24); }
+  }
+  activePriceDisplay.textContent = isNaN(pricePerGram) ? 'قیمت وارد نشده' : (fmt(Math.round(pricePerGram)) + ' تومان (عیار ' + purity + ')');
+}
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(t=> t.addEventListener('click', ()=>{ document.querySelectorAll('.tab').forEach(x=>{ x.classList.remove('active'); x.setAttribute('aria-selected','false'); }); t.classList.add('active'); t.setAttribute('aria-selected','true'); const m = t.dataset.mode; document.querySelectorAll('.mode').forEach(md=> md.style.display = (md.dataset.mode === m ? '' : 'none')); updateActivePriceDisplay(); window.scrollTo({top: document.querySelector('.panel').offsetTop - 10, behavior:'smooth'}); }));
+
+/* ---------- export/import & bookmarks helpers (simple) ---------- */
+function renderAll(){
+  renderParsianTable(null); renderShamshTable(null); renderLocalHistory(); renderRulesUI();
+}
+function initialSetup(){
+  // try to restore from local history
+  if(storage.get('history')) renderLocalHistory();
+  updateActivePriceDisplay();
+  updateTimestamp();
+  // autos fetch if configured
+  if(FEATURES.autosFetchEveryMin && FEATURES.autosFetchEveryMin>0){
+    setInterval(()=>{ if(navigator.onLine) updatePriceFromRemote(true); }, FEATURES.autosFetchEveryMin*60*1000);
+  }
+}
+
+/* ---------- tiny UI niceties ---------- */
+themeToggle.addEventListener('click', ()=>{ themeToggle.classList.toggle('active'); document.documentElement.classList.toggle('dark'); });
+timeToggleTop.addEventListener('click', ()=>{ timeToggleTop.classList.toggle('active'); const v = timeToggleTop.classList.contains('active'); headerTimestamp.style.display = v? '': 'none'; asideTimestamp.style.display = v? '': 'none'; if(v) updateTimestamp(); });
+
+/* ---------- notifications on load & service worker ---------- */
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{/* ignore */});
+}
+
+/* ---------- Dev shortcuts: prevent trivial view-source (UX-level) ---------- */
+document.addEventListener('keydown', e=>{ if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='u'){ e.preventDefault(); alert('مشاهده سورس غیرفعال است.'); } });
+
+/* ---------- startup ---------- */
+(async function boot(){
+  const ok = await fingerprintCheck();
+  if(!ok){ FEATURES.ruleEngine=false; notify('قفل محلی فعال: برخی قابلیت‌ها غیرفعال شدند'); }
+  initialSetup();
+  renderAll();
+  // initial remote fetch (non-blocking)
+  try{ await updatePriceFromRemote(true); }catch(e){}
+})();
+
+</script>
 </body>
 </html>
